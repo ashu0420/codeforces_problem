@@ -15,7 +15,17 @@ using namespace std;
 
 void solve()
 {
+    // Your code here
+    int l, r;
+    cin >> l >> r;
+    int ans = (r - l) / 2;
+    if (l % 2 == 1 || r % 2 == 1)
+    {
+        ans++;
+    }
+    ct(ans/2);
 }
+
 int main()
 {
     int t;
@@ -24,4 +34,5 @@ int main()
     {
         solve();
     }
+    return 0;
 }

@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 #define ll long long
 #define li long
 #define cn(n) cin >> n
@@ -9,3 +10,18 @@
     fr(ll, 0, n) { cn(a[i]); }
 #define out(a, n) \
     fr(ll, 0, n) { cout << a[i] << " "; }
+
+using namespace std;
+
+void solve()
+{
+}
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+}

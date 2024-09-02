@@ -35,7 +35,7 @@ void solve()
                 if (s[i * k + j] == '0')
                 {
                     pn;
-                    break;
+                    return;
                 }
             }
             else

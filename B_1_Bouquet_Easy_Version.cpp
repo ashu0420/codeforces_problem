@@ -21,12 +21,12 @@ void solve()
     vector<ll> v(n);
     in(v, n);
     sort(v.begin(), v.end());
-    vector<ll> p(n);
-    p[0] = v[0];
-    for (ll i = 1; i < n; i++)
-    {
-        p[i] = p[i - 1] + v[i];
-    }
+    // vector<ll> p(n);
+    // p[0] = v[0];
+    // for (ll i = 1; i < n; i++)
+    // {
+    //     p[i] = p[i - 1] + v[i];
+    // }
     ll i = 0, j = 0;
     ll ans = 0, score = 0;
     while (j < n)

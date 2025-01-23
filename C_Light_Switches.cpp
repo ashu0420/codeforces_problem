@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 #define ll long long
 #define li long
 #define cn(n) cin >> n
@@ -9,76 +8,67 @@
 #define fr(dt, a, b) for (dt i = a; i < b; i++)
 #define in(a, n) \
     fr(ll, 0, n) { cn(a[i]); }
-#define out(a, n) \
-    fr(ll, 0, n) { cout << a[i] << " "; }
+#define out(a, n)                         \
+    fr(ll, 0, n) { cout << a[i] << " "; } \
+    cout << endl;
+#define sort(a) sort(a.begin(), a.end());
+#define vin(a, n)    \
+    vector<ll> a(n); \
+    in(a, n);
+const int MOD = 1e9 + 7;
 
 using namespace std;
 
 void solve()
 {
-    int n, k;
+    // Your code here
+    ll n, k;
     cin >> n >> k;
-    // map<li,li> mp;
-    // for(li i=0;i<n;i++)
-    // {
-    //     li x,f;
-    //     cin>>x;
-    //     mp[x]=i;
-    // }
-    // sort(mp.begin(),mp.end());
-    // auto it=prev(mp.end());
-    // li mele= it->first;
-    // for(auto it:mp)
-    // {
-    //     it.first/=(2*k);
-    // }
-    vector<pair<li, li>> v;
-    li mele = 0;
-    li melei = 0;
-    for (li i = 0; i < n; i++)
+    vin(v, n);
+    sort(v);
+    if (v[n - 1] - v[0] < k)
     {
-        li x, f;
-        cin >> x;
-        if (mele < x)
-        {
-            mele = x;
-            melei = i;
-        }
-        v[i].first = x / (2 * k);
-        v[i].second = i;
+        ct(v[n - 1]);
+        return;
     }
-    sort(v.begin(), v.end());
-    for (li i = 0; i < n - 1; i++)
+    for (ll i = 0; i < n - 1; i++)
     {
-        v[i].first = v[n - 1].first - v[i].first;
+        ll l = (v[n - 1] + k - v[i]) / (2 * k);
+        v[i] += l * 2 * k;
     }
-    bool flagl = 0, flagu = 0;
-    for (li i = 0; i < n - 1; i++)
+    sort(v);
+    if (v[n - 1] - v[0] < k)
     {
-        if (v[i].first > 0 && v[i].first <= k)
-        {
-            flagl = 1;
-        }
-        else if ((v[i].first > k && v[i].first < 2 * k) || v[i].first == 0)
-        {
-            flagu = 1;
-        }
+        ct(v[n - 1]);
+        return;
     }
-    sort(v.begin(), v.end());
-    if (flagl ^ flagu )
+    for (ll i = 0; i < n - 1; i++)
     {
-        if(melei!=v[n-1].second)
-        {
-            
-        }
+        ll l = (v[n - 1] + k - v[i]) / (2 * k);
+        v[i] += l * 2 * k;
     }
+    sort(v);
+    if (v[n - 1] - v[0] < k)
+    {
+        ct(v[n - 1]);
+        return;
+    }
+    ct("-1");
+    return;
 }
+
 int main()
 {
-    int t;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    cout.precision(10);
+    cout.setf(ios::fixed);
+    int t = 1;
     cin >> t;
     while (t--)
     {
         solve();
     }
+    return 0;
 }

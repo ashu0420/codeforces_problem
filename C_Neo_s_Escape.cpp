@@ -51,38 +51,42 @@ ll modular_inverse(ll denom)
 void solve()
 {
     // Your code here
-   ll n;
+    int n;
     cn(n);
-    vector<int> v(n + 1, 0);
-    ll p = 1;
-    for (ll i = 1; i < n; i++)
+    vin(a, n);
+    vector<int> v;
+    v.push_back(a[0]);
+    for (int i = 1; i < n; i++)
     {
-        if (gcd(i, n) == 1)
+        if (a[i] != *v.rbegin())
         {
-            v[i] = 1;
-            p *= i;
-            p %= n;
+            // ct(*v.end());
+            v.push_back(a[i]);
         }
     }
-    v[p] = 0;
-    v[1] = 1;
-    int cnt = 0;
-    for (int i = 1; i <= n; i++)
+    int cnt=0;
+    if(v.size()==1)
     {
-        if (v[i])
+        ct(1);
+        return;
+    }
+    if(v[0]>v[1])
+    {
+        cnt++;
+    }
+    int k=v.size();
+    for(int i=1;i<k-1;i++)
+    {
+        if(v[i]>v[i-1]&&v[i]>v[i+1])
         {
             cnt++;
         }
     }
-    ct(cnt);
-    for (int i = 1; i <= n; i++)
+    if(v[k-1]>v[k-2])
     {
-        if (v[i])
-        {
-            cout << i << " ";
-        }
+        cnt++;
     }
-    cout << endl;
+    ct(cnt);
 }
 
 int main()
@@ -93,7 +97,7 @@ int main()
     cout.precision(10);
     cout.setf(ios::fixed);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         solve();
